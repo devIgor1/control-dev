@@ -4,7 +4,7 @@ import "./globals.css"
 import { Header } from "@/components/header"
 import { AuthProvider } from "@/providers/auth"
 
-const poppins = Poppins({ subsets: ["latin"], weight: "800" })
+const poppins = Poppins({ subsets: ["latin"], weight: ["800", "400"] })
 
 export const metadata: Metadata = {
   title: "Dev Control - Your management system ",
