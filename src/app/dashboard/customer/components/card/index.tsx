@@ -6,7 +6,7 @@ import { CustomerProps } from "@/utils/customer.type"
 export function CardCustomer({ customer }: { customer: CustomerProps }) {
   async function handleDeleteCustomer() {
     try {
-      const response = await api.delete("/api/customer", {
+      await api.delete("/api/customer", {
         params: {
           id: customer.id,
         },

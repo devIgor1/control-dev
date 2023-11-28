@@ -29,7 +29,7 @@ export async function DELETE(req: Request) {
       },
     })
 
-    return NextResponse.json({ message: "Client deleted successfully!" })
+    return NextResponse.json({ message: "Client deleted successfully" })
   } catch (error) {
     return NextResponse.json(
       { error: "Failure when trying to delete a client" },
