@@ -1,7 +1,23 @@
 import Container from "@/components/container"
 import Link from "next/link"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth"
+import { redirect } from "next/navigation"
+import prisma from "@/lib/prisma"
 
-export default function NewTicket() {
+export default async function NewTicket() {
+  const session = await getServerSession(authOptions)
+
+  if (!session || !session.user) {
+    redirect("/")
+  }
+
+  const customers = await prisma.customer.findMany({
+    where: {
+      userId: session.user.id,
+    },
+  })
+
   return (
     <Container>
       <main className="mt-9 mb-2">
@@ -26,12 +42,20 @@ export default function NewTicket() {
             className="w-full border-2 rounded-md px-2 mb-2 h-24 resize-none pt-2"
             required
           ></textarea>
-          <label className="mb-1 font-medium text-lg">
-            Select the customer
-          </label>
-          <select className="w-full border-2 rounded-md px-2 mb-2 h-11  bg-white">
-            <option value="customer1">Customer 1</option>
-          </select>
+          {customers.length !== 0 && (
+            <>
+              <label className="mb-1 font-medium text-lg">
+                Select the customer
+              </label>
+              <select className="w-full border-2 rounded-md px-2 mb-2 h-11  bg-white">
+                {customers.map((customer) => (
+                  <option value="customer1" key={customer.id}>
+                    {customer.name}
+                  </option>
+                ))}
+              </select>
+            </>
+          )}
         </form>
       </main>
     </Container>
