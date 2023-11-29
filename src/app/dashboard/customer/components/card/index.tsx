@@ -3,6 +3,7 @@
 import { api } from "@/lib/api"
 import { CustomerProps } from "@/utils/customer.type"
 import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
 
 export function CardCustomer({ customer }: { customer: CustomerProps }) {
   const router = useRouter()
@@ -15,6 +16,17 @@ export function CardCustomer({ customer }: { customer: CustomerProps }) {
         },
       })
 
+      toast.success("Customer deleted successfully", {
+        style: {
+          border: "#3B82F6",
+          padding: "16px",
+          color: "#3B82F6",
+        },
+        iconTheme: {
+          primary: "#3B82F6",
+          secondary: "#FFFAEE",
+        },
+      })
       router.refresh()
     } catch (error) {}
   }

@@ -1,12 +1,13 @@
 "use client"
 
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { effect, z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "@/components/input"
 import { api } from "@/lib/api"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
+import { useEffect } from "react"
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -51,9 +52,26 @@ export function NewCustomerForm({ userId }: { userId: string }) {
       userId: userId,
     })
 
-    toast.success("Customer successfully registered!")
+    toast.success("Customer registered successfully", {
+      style: {
+        border: "#3B82F6",
+        padding: "16px",
+        color: "#3B82F6",
+      },
+      iconTheme: {
+        primary: "#3B82F6",
+        secondary: "#FFFAEE",
+      },
+    })
+    const delay = 1000
+
     router.refresh()
-    router.replace("/dashboard/customer")
+
+    const redirect = setTimeout(() => {
+      router.replace("/dashboard/customer")
+    }, delay)
+
+    return () => clearTimeout(redirect)
   }
 
   return (
