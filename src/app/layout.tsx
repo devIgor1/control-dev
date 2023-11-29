@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { AuthProvider } from "@/providers/auth"
+import { Toaster } from "react-hot-toast"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
         <AuthProvider>
           <Header />
           {children}
+          <Toaster position="top-center" />
         </AuthProvider>
       </body>
     </html>
