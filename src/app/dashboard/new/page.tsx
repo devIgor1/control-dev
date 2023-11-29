@@ -49,7 +49,7 @@ export default async function NewTicket() {
               </label>
               <select className="w-full border-2 rounded-md px-2 mb-2 h-11  bg-white">
                 {customers.map((customer) => (
-                  <option value="customer1" key={customer.id}>
+                  <option value={customer.id} key={customer.id}>
                     {customer.name}
                   </option>
                 ))}
