@@ -5,8 +5,6 @@ Este projeto visa proporcionar a forma como as empresas gerenciam seus clientes 
  
 
 
-
-
 ## Dependencias Necessárias
 
 Para fazer o uso desse projeto corretamente rode:
