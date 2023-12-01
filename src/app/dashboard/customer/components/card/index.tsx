@@ -28,7 +28,9 @@ export function CardCustomer({ customer }: { customer: CustomerProps }) {
         },
       })
       router.refresh()
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   }
   return (
     <article className="flex flex-col bg-gray-100 border-2 p-2 rounded-lg gap-2 hover:scale-105 duration-300">
