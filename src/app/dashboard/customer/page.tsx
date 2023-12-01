@@ -38,7 +38,7 @@ export default async function Customer() {
         </section>
 
         {customers.length === 0 && (
-          <h1 className="text-gray-600">
+          <h1 className="text-gray-600 text-2xl">
             It looks like you don't have any registered customers..
           </h1>
         )}

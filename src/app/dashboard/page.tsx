@@ -54,6 +54,16 @@ export default async function Dashboard() {
             ))}
           </tbody>
         </table>
+
+        {tickets.length === 0 && (
+          <h1 className="mt-10 text-2xl">
+            It looks like you don't have any open tickets, you need to
+            <span className="text-blue-500 hover:underline">
+              <Link href="/dashboard/new"> register one </Link>
+            </span>
+            to see it here!
+          </h1>
+        )}
       </main>
     </Container>
   )

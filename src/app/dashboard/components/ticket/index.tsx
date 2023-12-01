@@ -38,7 +38,7 @@ export function TicketItem({ customer, ticket }: TicketItemProps) {
           </span>
         </td>
         <td className="text-left">
-          <button className="mr-2" onClick={handleChangeStatus}>
+          <button className="mr-3" onClick={handleChangeStatus}>
             <FiCheckSquare size={24} color="#121212" />
           </button>
           <button>
