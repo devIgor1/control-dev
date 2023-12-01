@@ -34,21 +34,6 @@ export async function DELETE(req: Request) {
       { status: 400 }
     )
   }
-
-  try {
-    await prisma.customer.delete({
-      where: {
-        id: userId as string,
-      },
-    })
-
-    return NextResponse.json({ message: "Client deleted successfully" })
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Failure when trying to delete a client" },
-      { status: 400 }
-    )
-  }
 }
 
 //Registering customers

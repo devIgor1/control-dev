@@ -1,4 +1,4 @@
-interface TicketProps {
+export interface TicketProps {
   id: string
   name: string
   description: string

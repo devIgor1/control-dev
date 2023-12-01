@@ -4,6 +4,7 @@ import "./globals.css"
 import { Header } from "@/components/header"
 import { AuthProvider } from "@/providers/auth"
 import { Toaster } from "react-hot-toast"
+import { ModalProvider } from "@/providers/modal"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,9 +25,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <AuthProvider>
-          <Header />
-          {children}
-          <Toaster position="top-center" />
+          <ModalProvider>
+            <Header />
+            {children}
+            <Toaster position="top-center" />
+          </ModalProvider>
         </AuthProvider>
       </body>
     </html>

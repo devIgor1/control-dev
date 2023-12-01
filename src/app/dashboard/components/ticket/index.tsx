@@ -4,6 +4,9 @@ import { api } from "@/lib/api"
 import { CustomerProps } from "@/utils/customer.type"
 import { FiFile, FiCheckSquare } from "react-icons/fi"
 import { useRouter } from "next/navigation"
+import { TicketProps } from "@/utils/ticket.type"
+import { useContext } from "react"
+import { ModalContext } from "@/providers/modal"
 
 interface TicketItemProps {
   ticket: TicketProps
@@ -11,6 +14,8 @@ interface TicketItemProps {
 }
 
 export function TicketItem({ customer, ticket }: TicketItemProps) {
+  const { handleModalVisible } = useContext(ModalContext)
+
   const router = useRouter()
 
   async function handleChangeStatus() {
@@ -41,7 +46,7 @@ export function TicketItem({ customer, ticket }: TicketItemProps) {
           <button className="mr-3" onClick={handleChangeStatus}>
             <FiCheckSquare size={24} color="#121212" />
           </button>
-          <button>
+          <button onClick={handleModalVisible}>
             <FiFile size={24} color="3B82F6" />
           </button>
         </td>
