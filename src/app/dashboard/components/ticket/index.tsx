@@ -14,7 +14,7 @@ interface TicketItemProps {
 }
 
 export function TicketItem({ customer, ticket }: TicketItemProps) {
-  const { handleModalVisible } = useContext(ModalContext)
+  const { handleModalVisible, setDetailTicket } = useContext(ModalContext)
 
   const router = useRouter()
 
@@ -28,6 +28,14 @@ export function TicketItem({ customer, ticket }: TicketItemProps) {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  function handleOpenModal() {
+    handleModalVisible()
+    setDetailTicket({
+      customer: customer,
+      ticket: ticket,
+    })
   }
 
   return (
@@ -46,7 +54,7 @@ export function TicketItem({ customer, ticket }: TicketItemProps) {
           <button className="mr-3" onClick={handleChangeStatus}>
             <FiCheckSquare size={24} color="#121212" />
           </button>
-          <button onClick={handleModalVisible}>
+          <button onClick={handleOpenModal}>
             <FiFile size={24} color="3B82F6" />
           </button>
         </td>
