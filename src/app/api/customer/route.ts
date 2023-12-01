@@ -1,28 +1,26 @@
-import { getServerSession } from "next-auth"
 import { NextResponse } from "next/server"
+import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
-import prisma from "@/lib/prisma"
+import prismaClient from "@/lib/prisma"
 
-//Deleting customers
-export async function DELETE(req: Request) {
+export async function DELETE(request: Request) {
   const session = await getServerSession(authOptions)
 
   if (!session || !session.user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    return NextResponse.json({ error: "Not authorized" }, { status: 401 })
   }
 
-  const { searchParams } = new URL(req.url)
-
+  const { searchParams } = new URL(request.url)
   const userId = searchParams.get("id")
 
   if (!userId) {
     return NextResponse.json(
-      { error: "Failure when trying to delete a customer" },
+      { error: "Failed trying to delete customer" },
       { status: 400 }
     )
   }
 
-  const findTickets = await prisma.ticket.findFirst({
+  const findTickets = await prismaClient.ticket.findFirst({
     where: {
       customerId: userId,
     },
@@ -30,30 +28,53 @@ export async function DELETE(req: Request) {
 
   if (findTickets) {
     return NextResponse.json(
-      { error: "Failure when trying to delete a customer" },
+      { error: "Failed trying to delete customer" },
+      { status: 400 }
+    )
+  }
+
+  try {
+    await prismaClient.customer.delete({
+      where: {
+        id: userId as string,
+      },
+    })
+
+    return NextResponse.json({ message: "Customer successfully deleted!" })
+  } catch (err) {
+    console.log(err)
+    return NextResponse.json(
+      { error: "Failed trying to delete customer" },
       { status: 400 }
     )
   }
 }
 
-//Registering customers
-export async function POST(req: Request) {
+// Rota para cadastrar um cliente
+export async function POST(request: Request) {
   const session = await getServerSession(authOptions)
 
   if (!session || !session.user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    return NextResponse.json({ error: "Not authorized" }, { status: 401 })
   }
 
-  const { name, email, phone, address, userId } = await req.json()
+  const { name, email, phone, address, userId } = await request.json()
 
   try {
-    await prisma.customer.create({
-      data: { name, email, phone, address: address ? address : "", userId },
+    await prismaClient.customer.create({
+      data: {
+        name,
+        phone,
+        email,
+        address: address ? address : "",
+        userId: userId,
+      },
     })
-    return NextResponse.json({ message: "Customer successfully registered!" })
+
+    return NextResponse.json({ message: "Customer Successfully Registered!" })
   } catch (err) {
     return NextResponse.json(
-      { error: "Failed to register a new customer" },
+      { error: "Failed to register a customer" },
       { status: 400 }
     )
   }
