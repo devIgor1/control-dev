@@ -52,13 +52,6 @@ export async function DELETE(request: Request) {
     },
   })
 
-  if (findTickets) {
-    return NextResponse.json(
-      { error: "Failed trying to delete customer" },
-      { status: 400 }
-    )
-  }
-
   try {
     await prismaClient.customer.delete({
       where: {
