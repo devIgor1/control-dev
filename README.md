@@ -1,5 +1,5 @@
 
-# Gerenciamento de Clientes e Produtividade Empresarial (em desenvolvimento)
+# Gerenciamento de Clientes e Produtividade Empresarial 
 
 Este projeto visa proporcionar a forma como as empresas gerenciam seus clientes e impulsionam sua produtividade. A plataforma oferece uma dinâmica simples e potente para organizar informações, simplificar o gerenciamento de clientes e otimizar as operações empresariais.
  
