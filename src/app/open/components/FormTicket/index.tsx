@@ -4,6 +4,7 @@ import { Input } from "@/components/input"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { api } from "@/lib/api"
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -23,7 +24,7 @@ export function FormTicket() {
   })
 
   return (
-    <form className="px-4 py-6 mt-16 rounded border-2 ">
+    <form className="px-4 py-6 mt-16 rounded border-2">
       <div className="mb-5">
         <label className="mb-5 font-medium text-lg">Ticket name</label>
         <Input

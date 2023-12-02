@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { FiSearch, FiX } from "react-icons/fi"
 import { useState } from "react"
 import { FormTicket } from "./components/FormTicket"
+import { api } from "@/lib/api"
 
 const schema = z.object({
   email: z
@@ -29,6 +30,7 @@ export default function OpenTicket() {
     register,
     handleSubmit,
     setValue,
+    setError,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -37,6 +39,24 @@ export default function OpenTicket() {
   function handleClearCustomer() {
     setCustomer(null)
     setValue("email", "")
+  }
+
+  async function handleSearchCustomer(data: FormData) {
+    const response = await api.get("/api/customer", {
+      params: {
+        email: data.email,
+      },
+    })
+
+    if (response.data === null) {
+      setError("email", { type: "custom", message: "Customer not found" })
+      return
+    }
+
+    setCustomer({
+      id: response.data.id,
+      name: response.data.name,
+    })
   }
 
   return (
@@ -57,8 +77,8 @@ export default function OpenTicket() {
             </button>
           </div>
         ) : (
-          <form>
-            <div className="relative">
+          <form onSubmit={handleSubmit(handleSearchCustomer)}>
+            <div>
               <Input
                 name="email"
                 placeholder="Enter the customer email address please"
@@ -66,7 +86,10 @@ export default function OpenTicket() {
                 error={errors.email?.message}
                 register={register}
               />
-              <button className="w-full bg-blue-500 flex flex-row items-center justify-center gap-2 h-11 text-white font-medium rounded-b absolute inset-0 top-10 active:translate-y-2 duration-300">
+              <button
+                type="submit"
+                className="w-full bg-blue-500 flex flex-row items-center justify-center gap-2 h-11 mt-2 text-white font-medium rounded active:translate-y-2 duration-300"
+              >
                 Search Customer <FiSearch size={28} />
               </button>
             </div>
