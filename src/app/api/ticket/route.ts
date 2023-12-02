@@ -49,7 +49,7 @@ export async function POST(request: Request) {
 
   if (!customerId || !name || !description) {
     return NextResponse.json(
-      { message: "Error while create new ticket" },
+      { error: "Error while create new ticket" },
       { status: 400 }
     )
   }
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       data: {
         name: name,
         description: description,
-        status: "ACTIVE",
+        status: "OPEN",
         customerId: customerId,
       },
     })
@@ -71,6 +71,4 @@ export async function POST(request: Request) {
       { status: 400 }
     )
   }
-
-  return NextResponse.json({ message: "Success" })
 }

@@ -23,12 +23,8 @@ export async function GET(request: Request) {
 
     return NextResponse.json(customer)
   } catch (error) {
-    return NextResponse.json({ error: "Customer not found" })
+    return NextResponse.json({ error: "Customer not found" }, { status: 400 })
   }
-
-  return NextResponse.json({
-    message: "Founded the customer email",
-  })
 }
 
 //DELETE ROUTE
