@@ -41,7 +41,7 @@ export async function DELETE(request: Request) {
 
   if (!userId) {
     return NextResponse.json(
-      { error: "Failed trying to delete customer" },
+      { error: "Failed to delete customer." },
       { status: 400 }
     )
   }
@@ -63,7 +63,7 @@ export async function DELETE(request: Request) {
   } catch (err) {
     console.log(err)
     return NextResponse.json(
-      { error: "Failed trying to delete customer" },
+      { error: "Failed to delete customer." },
       { status: 400 }
     )
   }
