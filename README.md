@@ -41,6 +41,8 @@ Para fazer o uso desse projeto corretamente rode:
 ![image](https://github.com/devIgor1/dev-control/assets/88665118/5536a84d-f021-4bd6-8515-e04c62ba9ea5)
 ![image](https://github.com/devIgor1/dev-control/assets/88665118/d7858397-b5e4-4947-8451-f3e0e0fa86ef)
 ![image](https://github.com/devIgor1/dev-control/assets/88665118/7364e7c8-665e-453b-bb6f-782282fc9d87)
+![image](https://github.com/devIgor1/dev-control/assets/88665118/2eb78c90-70f2-4fbd-9cfc-8ad36b5765b3)
+
 
 
 
