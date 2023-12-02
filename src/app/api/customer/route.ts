@@ -3,6 +3,8 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import prismaClient from "@/lib/prisma"
 
+//DELETE ROUTE
+
 export async function DELETE(request: Request) {
   const session = await getServerSession(authOptions)
 
@@ -50,7 +52,8 @@ export async function DELETE(request: Request) {
   }
 }
 
-// Rota para cadastrar um cliente
+//POST ROUTE
+
 export async function POST(request: Request) {
   const session = await getServerSession(authOptions)
 
