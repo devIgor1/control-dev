@@ -43,3 +43,34 @@ export async function PATCH(req: Request) {
     )
   }
 }
+
+export async function POST(request: Request) {
+  const { customerId, name, description } = await request.json()
+
+  if (!customerId || !name || !description) {
+    return NextResponse.json(
+      { message: "Error while create new ticket" },
+      { status: 400 }
+    )
+  }
+
+  try {
+    await prisma.ticket.create({
+      data: {
+        name: name,
+        description: description,
+        status: "ACTIVE",
+        customerId: customerId,
+      },
+    })
+
+    return NextResponse.json({ message: "Ticket successfully added" })
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Error while create new ticket" },
+      { status: 400 }
+    )
+  }
+
+  return NextResponse.json({ message: "Success" })
+}
