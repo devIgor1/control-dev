@@ -23,7 +23,7 @@ interface CustomerInfo {
 }
 
 export default function OpenTicket() {
-  const [customer, setCustomer] = useState<CustomerInfo | null>()
+  const [customer, setCustomer] = useState<CustomerInfo | null>(null)
 
   const {
     register,
