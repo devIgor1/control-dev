@@ -2,7 +2,10 @@
 # Gerenciamento de Clientes e Produtividade Empresarial 
 
 Este projeto visa proporcionar a forma como as empresas gerenciam seus clientes e impulsionam sua produtividade. A plataforma oferece uma dinâmica simples e potente para organizar informações, simplificar o gerenciamento de clientes e otimizar as operações empresariais.
- 
+
+
+# Open Ticket
+- Ao acessar o /open, é possível realizar o cadastro de um ticket estando deslogado, é necessário passar o email do cliente e preencher as informações pedidas.
 
 
 ## Dependencias Necessárias
