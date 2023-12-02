@@ -5,7 +5,7 @@ Este projeto visa proporcionar a forma como as empresas gerenciam seus clientes 
 
 
 # Open Ticket
-- Ao acessar o /open, é possível realizar o cadastro de um ticket estando deslogado, é necessário passar o email do cliente e preencher as informações pedidas.
+- Ao acessar o {URL}/open, é possível realizar o cadastro de um ticket estando deslogado, é necessário passar o email do cliente e preencher as informações pedidas.
 
 
 ## Dependencias Necessárias
