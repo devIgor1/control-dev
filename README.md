@@ -21,7 +21,6 @@ Para fazer o uso desse projeto corretamente rode:
 ## Referências
 
  - [Next](https://nextjs.org/)
- - [React](https://react.dev/learn)
  - [React-Hook-Form](https://react-hook-form.com/)
  - [TailwindCSS](https://tailwindcss.com/)
  - [Zod](https://zod.dev/)
